@@ -25,3 +25,11 @@ class TradeList(generics.ListCreateAPIView):
 class TradeDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = TradeRequest.objects.all().order_by("id")
     serializer_class = RequestSerializer
+
+
+class HoldingsByUser(generics.ListAPIView):
+    serializer_class = HoldingSerializer
+
+    def get_queryset(self):
+        user_id = self.kwargs["user_id"]
+        return Holding.objects.filter(user_id_id=user_id)
