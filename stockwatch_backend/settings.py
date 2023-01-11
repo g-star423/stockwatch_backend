@@ -39,6 +39,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     "stockwatch_api",  # points to api urls, etc
+    "rest_framework",  # for API needs
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
