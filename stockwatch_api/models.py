@@ -9,7 +9,9 @@ class Holding(models.Model):
     stock_name = models.CharField(max_length=255)
     stock_ticker = models.CharField(max_length=9)
     number_of_shares = models.DecimalField(max_digits=8, decimal_places=2)
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
+    user_id = models.ForeignKey(
+        "auth_api.UserAccount", on_delete=models.CASCADE, default=None
+    )
 
 
 class TradeRequest(models.Model):
@@ -19,4 +21,11 @@ class TradeRequest(models.Model):
     trade_completed = models.BooleanField()
     ticket_closed = models.BooleanField()
     buying = models.BooleanField(default=False)
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
+    user_id = models.ForeignKey(
+        "auth_api.UserAccount", on_delete=models.CASCADE, default=None
+    )
+
+
+# class PlaidUser(models.Model):
+#     username = models.CharField(max_length=255, unique=True)
+#     password = models.CharField(max)

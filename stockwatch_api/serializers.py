@@ -19,6 +19,7 @@ class RequestSerializer(serializers.ModelSerializer):
     class Meta:
         model = TradeRequest
         fields = (
+            "id",
             "stock_ticker",
             "number_of_shares",
             "stock_name",

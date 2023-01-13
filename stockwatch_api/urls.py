@@ -11,4 +11,9 @@ urlpatterns = [
         views.HoldingsByUser.as_view(),
         name="user_holdings",
     ),
+    path(
+        "api/userrequests/<int:user_id>",
+        views.RequestsByUser.as_view(),
+        name="user_holdings",
+    ),
 ]

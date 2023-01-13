@@ -20,4 +20,5 @@ from django.conf.urls import include
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("stockwatch_api.urls")),
+    path("", include("auth_api.urls")),
 ]

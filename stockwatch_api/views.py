@@ -33,3 +33,11 @@ class HoldingsByUser(generics.ListAPIView):
     def get_queryset(self):
         user_id = self.kwargs["user_id"]
         return Holding.objects.filter(user_id_id=user_id)
+
+
+class RequestsByUser(generics.ListAPIView):
+    serializer_class = RequestSerializer
+
+    def get_queryset(self):
+        user_id = self.kwargs["user_id"]
+        return TradeRequest.objects.filter(user_id_id=user_id)
