@@ -14,6 +14,6 @@ urlpatterns = [
     path(
         "api/userrequests/<int:user_id>",
         views.RequestsByUser.as_view(),
-        name="user_holdings",
+        name="user_requests",
     ),
 ]

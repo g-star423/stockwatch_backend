@@ -21,4 +21,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("stockwatch_api.urls")),
     path("", include("auth_api.urls")),
+    path("", include("plaid_api.urls")),
 ]

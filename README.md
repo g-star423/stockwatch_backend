@@ -13,3 +13,6 @@ Today's goals will be to work on Typescript React frontend, and access all API e
 
 1.14.23
 hopefully start integrating Plaid Link React component
+
+1.16.23
+1. need to create endpoint that user sends their ID to, which then (via middleware) requests a Plaid Link token, and sends it back to user client.

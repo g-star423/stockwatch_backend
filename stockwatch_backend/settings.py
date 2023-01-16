@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "corsheaders",  # adding CORS
     "stockwatch_api",  # points to api urls, etc
     "auth_api",
+    "plaid_api",
     "rest_framework",  # for API needs
     "django.contrib.admin",
     "django.contrib.auth",
