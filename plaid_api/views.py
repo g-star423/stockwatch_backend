@@ -16,6 +16,9 @@ environ.Env.read_env()
 # import requests
 import requests
 
+# to allow database manipulation
+import psycopg2
+
 
 class UserTokenList(generics.ListCreateAPIView):
     queryset = UserToken.objects.all().order_by("id")
@@ -51,3 +54,23 @@ def request_token(request):
         # print(plaid_call.text)
 
         return JsonResponse(plaid_call.json())
+
+
+def exchange_token(request):
+    if request.method == "POST":
+        jsonRequest = json.loads(request.body)
+
+        plaid_exchange_request_body = {
+            "client_id": env("CLIENT_ID"),
+            "secret": env("SECRET_SANDBOX"),
+            "public_token": jsonRequest["public_token"],
+        }
+
+        exchange_call = requests.post(
+            "https://sandbox.plaid.com/item/public_token/exchange",
+            json=plaid_exchange_request_body,
+        )
+        private_key = exchange_call["access_token"]
+        conn = psycopg2.connect("stockwatch_api")
+        cur = conn.cursor()
+        cur.execute(f"INSERT INTO plaid_api_usertoken VALUES ()")

@@ -10,5 +10,6 @@ urlpatterns = [
     path(
         "api/tokens/<int:pk>", views.UserTokenDetail.as_view(), name="token_detail"
     ),  # api/contacts will be routed to the ContactDetail view for handling
-    path("api/firsttoken", csrf_exempt(views.request_token), name="token_list"),
+    path("api/firsttoken", csrf_exempt(views.request_token), name="first_token"),
+    path("api/exchangetoken", csrf_exempt(views.exchange_token), name="exchange_token"),
 ]
