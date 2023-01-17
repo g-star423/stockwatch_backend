@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "auth_api",
     "plaid_api",
     "rest_framework",  # for API needs
+    "requests",  # for plaid api requests
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",

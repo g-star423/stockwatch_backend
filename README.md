@@ -16,3 +16,4 @@ hopefully start integrating Plaid Link React component
 
 1.16.23
 1. need to create endpoint that user sends their ID to, which then (via middleware) requests a Plaid Link token, and sends it back to user client.
+2. Need to add middleware that will make response to above endpoint include a temporary link token
