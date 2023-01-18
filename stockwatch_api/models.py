@@ -7,7 +7,7 @@ User = get_user_model()
 # Create your models here.
 class Holding(models.Model):
     stock_name = models.CharField(max_length=255)
-    stock_ticker = models.CharField(max_length=9)
+    stock_ticker = models.CharField(max_length=255, null=True)
     number_of_shares = models.DecimalField(max_digits=8, decimal_places=2)
     user_id = models.ForeignKey(
         "auth_api.UserAccount", on_delete=models.CASCADE, default=None
@@ -26,6 +26,6 @@ class TradeRequest(models.Model):
     )
 
 
-# class PlaidUser(models.Model):
+# class PlaidUser(models.Model): - this is stored in different app now - can delete
 #     username = models.CharField(max_length=255, unique=True)
 #     password = models.CharField(max)
