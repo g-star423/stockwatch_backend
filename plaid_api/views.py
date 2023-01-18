@@ -83,3 +83,30 @@ def exchange_token(request):
         # cur.close()
         # conn.close()
         return JsonResponse({"response": "hopefully ok"})
+
+
+def update_holdings(request):
+    if request.method == "POST":
+        jsonRequest = json.loads(request.body)
+        user_id = jsonRequest["user_id"]
+        cur = connection.cursor()
+        cur.execute(
+            f"SELECT link_token FROM plaid_api_usertoken WHERE user_id_id={user_id}"
+        )
+        access_token = cur.fetchone()
+        print("start access token")
+        print(access_token)
+        print("finish access token")
+
+        holdings_request_body = {
+            "client_id": env("CLIENT_ID"),
+            "secret": env("SECRET_SANDBOX"),
+            "access_token": access_token[0],
+        }
+        holdings = requests.post(
+            "https://sandbox.plaid.com/investments/holdings/get",
+            json=holdings_request_body,
+        )
+        holdingsJson = holdings.json()
+        print(holdingsJson)
+        return JsonResponse({})
